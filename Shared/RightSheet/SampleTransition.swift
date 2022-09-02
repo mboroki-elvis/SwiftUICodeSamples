@@ -13,10 +13,10 @@ struct SampleTransition: View {
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .center) {
-                Toggle("Toggle Left to right", isOn: $isLeftToRight)
+                Toggle("Toggle Direction", isOn: $isLeftToRight)
                     .frame(width: 200, height: 50)
                     .padding()
-                Button("handle") {
+                Button("Show Right Sheet") {
                     showView = true
                 }
             }
