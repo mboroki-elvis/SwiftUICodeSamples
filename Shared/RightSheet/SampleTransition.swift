@@ -21,7 +21,7 @@ struct SampleTransition: View {
                 }
             }
             .frame(width: geo.size.width, height: geo.size.height)
-            .rightSheet(isPresented: $showView, transitionType: .ratio(0.4)) {
+            .rightSheet(isPresented: $showView, transitionType: .ratio(0.5)) {
                 SampleView(showView: $showView)
             }
             .environment(\.layoutDirection,
