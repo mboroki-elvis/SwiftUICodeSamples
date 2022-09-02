@@ -78,6 +78,7 @@ struct SampleView: View {
                             .frame(width: 342, height: 247)
                             .background(Color.dropDownGray)
                             .clipShape(ToolTipShape(corners: .allCorners, radius: 8, toolTipPosition: .bottom(xPositionMultiplier: 0.1, 10)))
+                            .flipsForRightToLeftLayoutDirection(true)
                             .shadow(color: .lightGray, radius: 8)
                             .position(x: geo.size.width / 2, y: -247 / 2)
                         }

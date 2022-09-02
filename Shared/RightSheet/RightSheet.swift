@@ -29,20 +29,6 @@ struct RightSheetModifier<ViewContent: View>: ViewModifier {
     }
 }
 
-extension View {
-    func rightSheet<Content>(
-        isPresented: Binding<Bool>,
-        transitionType: RightTransitonType,
-        @ViewBuilder content: @escaping () -> Content
-    ) -> some View where Content: View {
-        modifier(RightSheetModifier(
-            viewContent: content(),
-            isPresented: isPresented.wrappedValue,
-            transitionType: transitionType
-        ))
-    }
-}
-
 enum RightTransitonType {
     case medium
     case ratio(_ ratio: CGFloat)
@@ -58,5 +44,19 @@ enum RightTransitonType {
         case .fullscreen:
             return (width: width, xPosition: width * 0.5)
         }
+    }
+}
+
+extension View {
+    func rightSheet<Content>(
+        isPresented: Binding<Bool>,
+        transitionType: RightTransitonType,
+        @ViewBuilder content: @escaping () -> Content
+    ) -> some View where Content: View {
+        modifier(RightSheetModifier(
+            viewContent: content(),
+            isPresented: isPresented.wrappedValue,
+            transitionType: transitionType
+        ))
     }
 }

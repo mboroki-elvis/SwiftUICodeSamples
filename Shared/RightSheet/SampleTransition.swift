@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct SampleTransition: View {
+    @State private var isLeftToRight = true
     @State private var showView: Bool = false
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .center) {
+                Toggle("Toggle Left to right", isOn: $isLeftToRight)
+                    .frame(width: 200, height: 50)
+                    .padding()
                 Button("handle") {
                     showView = true
                 }
@@ -20,6 +24,8 @@ struct SampleTransition: View {
             .rightSheet(isPresented: $showView, transitionType: .ratio(0.4)) {
                 SampleView(showView: $showView)
             }
+            .environment(\.layoutDirection,
+                         isLeftToRight ? .leftToRight : .rightToLeft)
         }
     }
 }
