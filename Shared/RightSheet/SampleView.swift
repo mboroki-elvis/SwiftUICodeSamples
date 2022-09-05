@@ -50,7 +50,7 @@ struct SampleView: View {
                         Button {
                             showToolTip.toggle()
                         } label: {
-                            Text("Show item \(frame.size.width)")
+                            Text("Show item")
                                 .padding()
                         }
                         .frame(height: 50)
@@ -91,8 +91,6 @@ struct SampleView: View {
                 }
                 Spacer()
             }
-            .background(Color.white)
-            .shadow(color: .lightGray, radius: 8, x: 1, y: 1)
         }
     }
 }

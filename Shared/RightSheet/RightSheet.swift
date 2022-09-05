@@ -18,6 +18,8 @@ struct RightSheetModifier<ViewContent: View>: ViewModifier {
                     let config = transitionType.config(width: geo.size.width)
                     if isPresented {
                         viewContent
+                            .background(Color.white)
+                            .shadow(color: .lightGray, radius: 8, x: 1, y: 1)
                             .frame(width: config.width, height: geo.size.height)
                             .position(x: config.xPosition, y: geo.size.height / 2)
                             .transition(.move(edge: .trailing))
