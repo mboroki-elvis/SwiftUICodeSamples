@@ -34,15 +34,9 @@ struct SampleView: View {
                     .padding([.trailing, .top], 32)
                 }
                 Spacer().frame(height: 50)
-                ForEach(0 ..< 6) { i in
-                    HStack(alignment: .center) {
-                        Spacer()
-                        TextField("Some texfield \(i)", text: $sometext)
-                            .frame(width: geo.size.width * 0.9, height: 40)
-                        Spacer()
-                    }
-                }
+                ContentView()
                 .padding()
+                Spacer().frame(height: 32)
                 GeometryReader { georeader in
                     let frame = georeader.frame(in: .global)
                     HStack(alignment: .center) {

@@ -25,6 +25,10 @@
 		C4B831D228B74F9F00D3E807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4B831A728B74F9F00D3E807 /* Assets.xcassets */; };
 		C4B831E828B76C2200D3E807 /* ToolTipShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B831E728B76C2200D3E807 /* ToolTipShape.swift */; };
 		C4B831E928B76C2200D3E807 /* ToolTipShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B831E728B76C2200D3E807 /* ToolTipShape.swift */; };
+		C4D2137028C74FD50082728E /* PDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D2136F28C74FD50082728E /* PDFView.swift */; };
+		C4D2137128C74FD50082728E /* PDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D2136F28C74FD50082728E /* PDFView.swift */; };
+		C4D2137428C7501B0082728E /* terms.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C4D2137328C7501B0082728E /* terms.pdf */; };
+		C4D2137528C7501B0082728E /* terms.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C4D2137328C7501B0082728E /* terms.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,8 @@
 		C4B831C928B74F9F00D3E807 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		C4B831CB28B74F9F00D3E807 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		C4B831E728B76C2200D3E807 /* ToolTipShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipShape.swift; sourceTree = "<group>"; };
+		C4D2136F28C74FD50082728E /* PDFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFView.swift; sourceTree = "<group>"; };
+		C4D2137328C7501B0082728E /* terms.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = terms.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				C4B831A528B74F9C00D3E807 /* CodeSamplesApp.swift */,
+				C4D2137328C7501B0082728E /* terms.pdf */,
+				C4D2137228C74FE20082728E /* PDFView */,
 				C451A09428C23E3B00184BCB /* RightSheet */,
 				C4B06E7B28C23EE1009BB57C /* ToolTipShape */,
 				C4B06E7F28C23FA2009BB57C /* Extensions */,
@@ -179,6 +187,14 @@
 				C4B831CB28B74F9F00D3E807 /* Tests_macOSLaunchTests.swift */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		C4D2137228C74FE20082728E /* PDFView */ = {
+			isa = PBXGroup;
+			children = (
+				C4D2136F28C74FD50082728E /* PDFView.swift */,
+			);
+			path = PDFView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,6 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4D2137428C7501B0082728E /* terms.pdf in Resources */,
 				C4B831D128B74F9F00D3E807 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,6 +331,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4D2137528C7501B0082728E /* terms.pdf in Resources */,
 				C4B831D228B74F9F00D3E807 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4D2137028C74FD50082728E /* PDFView.swift in Sources */,
 				C4B06E7928C23EA7009BB57C /* RightSheet.swift in Sources */,
 				C4B06E7D28C23F9F009BB57C /* Extensions.swift in Sources */,
 				C4B831E828B76C2200D3E807 /* ToolTipShape.swift in Sources */,
@@ -352,6 +371,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4D2137128C74FD50082728E /* PDFView.swift in Sources */,
 				C4B06E7A28C23EA7009BB57C /* RightSheet.swift in Sources */,
 				C4B06E7E28C23F9F009BB57C /* Extensions.swift in Sources */,
 				C4B831E928B76C2200D3E807 /* ToolTipShape.swift in Sources */,

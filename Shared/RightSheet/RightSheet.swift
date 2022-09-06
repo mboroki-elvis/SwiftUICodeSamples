@@ -23,6 +23,7 @@ struct RightSheetModifier<ViewContent: View>: ViewModifier {
                             .frame(width: config.width, height: geo.size.height)
                             .position(x: config.xPosition, y: geo.size.height / 2)
                             .transition(.move(edge: .trailing))
+                            .clipped()
                     } else {
                         EmptyView()
                     }
