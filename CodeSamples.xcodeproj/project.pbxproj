@@ -27,8 +27,8 @@
 		C4B831E928B76C2200D3E807 /* ToolTipShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B831E728B76C2200D3E807 /* ToolTipShape.swift */; };
 		C4D2137028C74FD50082728E /* PDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D2136F28C74FD50082728E /* PDFView.swift */; };
 		C4D2137128C74FD50082728E /* PDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D2136F28C74FD50082728E /* PDFView.swift */; };
-		C4D2137428C7501B0082728E /* terms.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C4D2137328C7501B0082728E /* terms.pdf */; };
-		C4D2137528C7501B0082728E /* terms.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C4D2137328C7501B0082728E /* terms.pdf */; };
+		C4D2137728C764CC0082728E /* sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C4D2137628C764CC0082728E /* sample.pdf */; };
+		C4D2137828C764CC0082728E /* sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C4D2137628C764CC0082728E /* sample.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +66,7 @@
 		C4B831CB28B74F9F00D3E807 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		C4B831E728B76C2200D3E807 /* ToolTipShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipShape.swift; sourceTree = "<group>"; };
 		C4D2136F28C74FD50082728E /* PDFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFView.swift; sourceTree = "<group>"; };
-		C4D2137328C7501B0082728E /* terms.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = terms.pdf; sourceTree = "<group>"; };
+		C4D2137628C764CC0082728E /* sample.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sample.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				C4B831A528B74F9C00D3E807 /* CodeSamplesApp.swift */,
-				C4D2137328C7501B0082728E /* terms.pdf */,
+				C4D2137628C764CC0082728E /* sample.pdf */,
 				C4D2137228C74FE20082728E /* PDFView */,
 				C451A09428C23E3B00184BCB /* RightSheet */,
 				C4B06E7B28C23EE1009BB57C /* ToolTipShape */,
@@ -322,7 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4D2137428C7501B0082728E /* terms.pdf in Resources */,
+				C4D2137728C764CC0082728E /* sample.pdf in Resources */,
 				C4B831D128B74F9F00D3E807 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,7 +331,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4D2137528C7501B0082728E /* terms.pdf in Resources */,
+				C4D2137828C764CC0082728E /* sample.pdf in Resources */,
 				C4B831D228B74F9F00D3E807 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

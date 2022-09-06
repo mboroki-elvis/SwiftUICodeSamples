@@ -13,7 +13,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    let fileUrl = Bundle.main.url(forResource: "terms", withExtension: "pdf")!
+    let fileUrl = Bundle.main.url(forResource: "sample", withExtension: "pdf")!
     let pub = NotificationCenter.default.publisher(for: Notification.Name.PDFViewPageChanged)
     private func performPageCheck(_ output: NotificationCenter.Publisher.Output) {
         if let object = output.object as? PDFView,
