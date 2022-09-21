@@ -1,9 +1,10 @@
 import SwiftUI
 
 public struct TextDropDown: View {
-    @State public var isHidden = true
-    public var items: [TextDropDownValue]
+    @State private var isHidden = true
     @State private var selectedText: AttributedString = "Select"
+    // Required values
+    public var items: [TextDropDownValue]
     public var onItemSelected: (TextDropDownValue) -> Void = { _ in }
     private var contentHeight: CGFloat {
         return CGFloat(items.count * 50)
@@ -14,9 +15,9 @@ public struct TextDropDown: View {
         items: [TextDropDownValue],
         onItemSelected: @escaping (TextDropDownValue) -> Void
     ) {
-        _isHidden = State(initialValue: isHidden)
         self.items = items
         self.onItemSelected = onItemSelected
+        _isHidden = State(initialValue: isHidden)
     }
 
     public var body: some View {
@@ -66,6 +67,7 @@ public struct TextDropDown: View {
                         Spacer().frame(width: 8)
                     }
                     .onTapGesture {
+                        isHidden.toggle()
                         selectedText = item.value 
                         onItemSelected(item)
                     }
