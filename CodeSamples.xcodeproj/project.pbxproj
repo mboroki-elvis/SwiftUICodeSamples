@@ -31,6 +31,8 @@
 		C4D2137828C764CC0082728E /* sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C4D2137628C764CC0082728E /* sample.pdf */; };
 		C4DF2D5028DB1ED2008C2E95 /* TextDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DF2D4F28DB1ED2008C2E95 /* TextDropDown.swift */; };
 		C4DF2D5128DB1ED2008C2E95 /* TextDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DF2D4F28DB1ED2008C2E95 /* TextDropDown.swift */; };
+		C4DF2D5528DB66A0008C2E95 /* AttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DF2D5428DB66A0008C2E95 /* AttributedString+Extension.swift */; };
+		C4DF2D5628DB66A0008C2E95 /* AttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DF2D5428DB66A0008C2E95 /* AttributedString+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,7 @@
 		C4D2136F28C74FD50082728E /* PDFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFView.swift; sourceTree = "<group>"; };
 		C4D2137628C764CC0082728E /* sample.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sample.pdf; sourceTree = "<group>"; };
 		C4DF2D4F28DB1ED2008C2E95 /* TextDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDropDown.swift; sourceTree = "<group>"; };
+		C4DF2D5428DB66A0008C2E95 /* AttributedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttributedString+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				C4B06E7C28C23F9F009BB57C /* Extensions.swift */,
+				C4DF2D5428DB66A0008C2E95 /* AttributedString+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -378,6 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4D2137028C74FD50082728E /* PDFView.swift in Sources */,
+				C4DF2D5528DB66A0008C2E95 /* AttributedString+Extension.swift in Sources */,
 				C4B06E7928C23EA7009BB57C /* RightSheet.swift in Sources */,
 				C4B06E7D28C23F9F009BB57C /* Extensions.swift in Sources */,
 				C4B831E828B76C2200D3E807 /* ToolTipShape.swift in Sources */,
@@ -393,6 +398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4D2137128C74FD50082728E /* PDFView.swift in Sources */,
+				C4DF2D5628DB66A0008C2E95 /* AttributedString+Extension.swift in Sources */,
 				C4B06E7A28C23EA7009BB57C /* RightSheet.swift in Sources */,
 				C4B06E7E28C23F9F009BB57C /* Extensions.swift in Sources */,
 				C4B831E928B76C2200D3E807 /* ToolTipShape.swift in Sources */,

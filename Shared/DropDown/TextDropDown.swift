@@ -3,6 +3,10 @@ import SwiftUI
 public struct TextDropDown: View {
     @State public var isHidden = true
     @State public var items: [TextDropDownValue]
+    private var contentHeight: CGFloat {
+        return CGFloat(items.count * 50)
+    }
+
     public init(isHidden: Bool = true, items: [TextDropDownValue]) {
         self.isHidden = isHidden
         self.items = items
@@ -41,9 +45,9 @@ public struct TextDropDown: View {
                         Spacer().frame(width: 8)
                         VStack {
                             Text(item.value)
+                                .foregroundColor(Color.grayText)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .opacity(isHidden ? 0 : 1)
-                                .aspectRatio(1, contentMode: .fill)
                             if item.id != items.last?.id {
                                 Color.borderColor.opacity(isHidden ? 0 : 1).frame(height: 0.5)
                             }
@@ -54,7 +58,7 @@ public struct TextDropDown: View {
                 }
                 Spacer()
             }
-            .frame(height: isHidden ? 0 : 230)
+            .frame(height: isHidden ? 0 : contentHeight)
             .opacity(isHidden ? 0 : 1)
             .animation(.easeInOut, value: isHidden)
             .background {
@@ -82,7 +86,7 @@ public struct TextDropDown: View {
 
 public struct TextDropDownValue: Identifiable, Hashable {
     public let id: String
-    public let value: String
+    public let value: AttributedString
 }
 
 struct DropDown_Previews: PreviewProvider {
@@ -90,11 +94,56 @@ struct DropDown_Previews: PreviewProvider {
         TextDropDown(
             isHidden: true,
             items: [
-                .init(id: UUID().uuidString, value: "KES  0 - 3 million"),
-                .init(id: UUID().uuidString, value: "KES  +3 - 40 million"),
-                .init(id: UUID().uuidString, value: "KES  +40 - 200 million"),
-                .init(id: UUID().uuidString, value: "KES +200 million")
+                .init(
+                    id: UUID().uuidString,
+                    value: .init("KES 0 - 3 million")
+                        .fontAttribute(
+                            range: "KES",
+                            font: .system(size: 14, weight: .bold)
+                        )
+                        .fontAttribute(
+                            range: "0 - 3 million",
+                            font: .system(size: 14, weight: .regular)
+                        )
+                ),
+                .init(
+                    id: UUID().uuidString,
+                    value: .init("KES +3 - 40 million")
+                        .fontAttribute(
+                            range: "KES",
+                            font: .system(size: 14, weight: .bold)
+                        )
+                        .fontAttribute(
+                            range: "+3 - 40 million",
+                            font: .system(size: 14, weight: .regular)
+                        )
+                ),
+                .init(
+                    id: UUID().uuidString,
+                    value: .init("KES +40 - 200 million")
+                        .fontAttribute(
+                            range: "KES",
+                            font: .system(size: 14, weight: .bold)
+                        ).fontAttribute(
+                            range: "+40 - 200 million",
+                            font: .system(size: 14, weight: .regular)
+                        )
+                ),
+                .init(
+                    id: UUID().uuidString,
+                    value: .init("KES +200 million")
+                        .fontAttribute(
+                            range: "KES",
+                            font: .system(size: 14, weight: .bold)
+                        )
+                        .fontAttribute(
+                            range: "+200 million",
+                            font: .system(size: 14, weight: .regular)
+                        )
+                )
             ]
         )
     }
 }
+
+
