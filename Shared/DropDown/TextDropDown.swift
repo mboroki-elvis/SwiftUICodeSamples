@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct DropDown: View {
+struct TextDropDown: View {
     @State private var isHidden = true
     var body: some View {
         VStack(alignment: .leading) {
@@ -76,6 +76,6 @@ struct DropDown: View {
 
 struct DropDown_Previews: PreviewProvider {
     static var previews: some View {
-        DropDown()
+        TextDropDown()
     }
 }
