@@ -17,14 +17,14 @@ struct DropDown: View {
                     Image(systemName: "arrowtriangle.down.fill")
                         .frame(width: 7, height: 7)
                         .padding([.trailing], 8)
-                        .foregroundColor(.black)
+                        .foregroundColor(Color.dropDownImage)
                 }
                 .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
             }
             .frame(maxWidth: .infinity)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(.blue, lineWidth: 1)
+                    .stroke(Color.borderColor, lineWidth: 1)
             )
             .padding()
             Spacer().frame(height: 4)

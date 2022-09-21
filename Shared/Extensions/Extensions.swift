@@ -3,6 +3,7 @@ public extension Color {
     static let dropDownGray = hex(0xfafafc)
     static let lightGray = hex(0xeaeaea)
     static let borderColor = hex(0xCCCCCC)
+    static let dropDownImage = hex(0x999999)
     static func hex(_ hex: UInt) -> Self {
         Self(
             red: Double((hex & 0xff0000) >> 16) / 255,
