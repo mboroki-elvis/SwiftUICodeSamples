@@ -90,10 +90,10 @@ struct DropDown_Previews: PreviewProvider {
         TextDropDown(
             isHidden: true,
             items: [
-                .init(id: UUID().uuidString, value: "SAR  0 - 3 million"),
-                .init(id: UUID().uuidString, value: "SAR  +3 - 40 million"),
-                .init(id: UUID().uuidString, value: "SAR  +40 - 200 million"),
-                .init(id: UUID().uuidString, value: "SAR +200 million")
+                .init(id: UUID().uuidString, value: "KES  0 - 3 million"),
+                .init(id: UUID().uuidString, value: "KES  +3 - 40 million"),
+                .init(id: UUID().uuidString, value: "KES  +40 - 200 million"),
+                .init(id: UUID().uuidString, value: "KES +200 million")
             ]
         )
     }
