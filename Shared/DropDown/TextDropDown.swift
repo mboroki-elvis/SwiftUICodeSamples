@@ -69,15 +69,17 @@ public struct TextDropDown: View {
                     toolWidth: 16,
                     toolTipPosition: .top(xPositionMultiplier: 0.05, 10)
                 )
-                .fill(Color.dropDownGray)
-                ToolTipShape(
-                    corners: .allCorners,
-                    radius: 8,
-                    toolTipHeight: 12,
-                    toolWidth: 16,
-                    toolTipPosition: .top(xPositionMultiplier: 0.05, 10)
-                )
                 .strokeBorder(Color.borderColor, lineWidth: 1)
+                .background(content: {
+                    ToolTipShape(
+                        corners: .allCorners,
+                        radius: 8,
+                        toolTipHeight: 12,
+                        toolWidth: 16,
+                        toolTipPosition: .top(xPositionMultiplier: 0.05, 10)
+                    )
+                    .fill(Color.dropDownGray)
+                })
                 .opacity(isHidden ? 0 : 1)
             }
         }
