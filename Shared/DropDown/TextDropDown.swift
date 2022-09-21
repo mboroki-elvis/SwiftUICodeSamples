@@ -1,8 +1,14 @@
 import SwiftUI
 
-struct TextDropDown: View {
-    @State private var isHidden = true
-    var body: some View {
+public struct TextDropDown: View {
+    @State public var isHidden = true
+    @State public var items: [TextDropDownValue]
+    public init(isHidden: Bool = true, items: [TextDropDownValue]) {
+        self.isHidden = isHidden
+        self.items = items
+    }
+
+    public var body: some View {
         VStack(alignment: .leading) {
             Button {
                 withAnimation {
@@ -27,18 +33,18 @@ struct TextDropDown: View {
                     .stroke(Color.borderColor, lineWidth: 1)
             )
             .padding()
-            Spacer().frame(height: 4)
+            Spacer().frame(height: isHidden ? 0 : 4)
             VStack {
                 Spacer()
-                ForEach(0 ..< 5) { item in
+                ForEach(items) { item in
                     HStack {
                         Spacer().frame(width: 8)
                         VStack {
-                            Text("\(item) some item here")
+                            Text(item.value)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .opacity(isHidden ? 0 : 1)
                                 .aspectRatio(1, contentMode: .fill)
-                            if item != 4 {
+                            if item.id != items.last?.id {
                                 Color.borderColor.opacity(isHidden ? 0 : 1).frame(height: 0.5)
                             }
                         }
@@ -74,8 +80,21 @@ struct TextDropDown: View {
     }
 }
 
+public struct TextDropDownValue: Identifiable, Hashable {
+    public let id: String
+    public let value: String
+}
+
 struct DropDown_Previews: PreviewProvider {
     static var previews: some View {
-        TextDropDown()
+        TextDropDown(
+            isHidden: true,
+            items: [
+                .init(id: UUID().uuidString, value: "SAR  0 - 3 million"),
+                .init(id: UUID().uuidString, value: "SAR  +3 - 40 million"),
+                .init(id: UUID().uuidString, value: "SAR  +40 - 200 million"),
+                .init(id: UUID().uuidString, value: "SAR +200 million")
+            ]
+        )
     }
 }
