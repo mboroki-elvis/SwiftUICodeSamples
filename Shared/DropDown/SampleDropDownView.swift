@@ -10,7 +10,10 @@ struct SampleDropDownView: View {
                     TextField("\(i) Please fille in the following", text: $someText)
                 }
                 .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-                TextDropDown(items: TextDropDownValue.sample())
+                TextDropDown(
+                    items: TextDropDownValue.sample(),
+                    onItemSelected: { _ in }
+                )
             }
         }
     }

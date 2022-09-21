@@ -2,14 +2,21 @@ import SwiftUI
 
 public struct TextDropDown: View {
     @State public var isHidden = true
-    @State public var items: [TextDropDownValue]
+    public var items: [TextDropDownValue]
+    @State private var selectedText: AttributedString = "Select"
+    public var onItemSelected: (TextDropDownValue) -> Void = { _ in }
     private var contentHeight: CGFloat {
         return CGFloat(items.count * 50)
     }
 
-    public init(isHidden: Bool = true, items: [TextDropDownValue]) {
-        self.isHidden = isHidden
+    public init(
+        isHidden: Bool = true,
+        items: [TextDropDownValue],
+        onItemSelected: @escaping (TextDropDownValue) -> Void
+    ) {
+        _isHidden = State(initialValue: isHidden)
         self.items = items
+        self.onItemSelected = onItemSelected
     }
 
     public var body: some View {
@@ -20,10 +27,10 @@ public struct TextDropDown: View {
                 }
             } label: {
                 HStack {
-                    Text("Select")
+                    Text(selectedText)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .font(.caption)
-                        .foregroundColor(.black)
+                        .font(.system(size: 14, weight: .regular))
+                        .foregroundColor(.grayText)
                     Image(systemName: "arrowtriangle.down.fill")
                         .frame(width: 7, height: 7)
                         .padding([.trailing], 8)
@@ -49,10 +56,18 @@ public struct TextDropDown: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .opacity(isHidden ? 0 : 1)
                             if item.id != items.last?.id {
-                                Color.borderColor.opacity(isHidden ? 0 : 1).frame(height: 0.5)
+                                Color
+                                    .borderColor
+                                    .opacity(
+                                        isHidden ? 0 : 1
+                                    ).frame(height: 0.5)
                             }
                         }
                         Spacer().frame(width: 8)
+                    }
+                    .onTapGesture {
+                        selectedText = item.value 
+                        onItemSelected(item)
                     }
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 }
@@ -91,8 +106,8 @@ public struct TextDropDownValue: Identifiable, Hashable {
     public let value: AttributedString
 }
 
-extension TextDropDownValue {
-    public static func sample() -> [TextDropDownValue] {
+public extension TextDropDownValue {
+    static func sample() -> [TextDropDownValue] {
         [.init(
             id: UUID().uuidString,
             value: .init("KES 0 - 3 million")
@@ -147,7 +162,9 @@ struct DropDown_Previews: PreviewProvider {
     static var previews: some View {
         TextDropDown(
             isHidden: true,
-            items: TextDropDownValue.sample()
+            items: TextDropDownValue.sample(),
+            onItemSelected: { _ in
+            }
         )
     }
 }
