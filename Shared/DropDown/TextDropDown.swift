@@ -91,61 +91,63 @@ public struct TextDropDownValue: Identifiable, Hashable {
     public let value: AttributedString
 }
 
+extension TextDropDownValue {
+    public static func sample() -> [TextDropDownValue] {
+        [.init(
+            id: UUID().uuidString,
+            value: .init("KES 0 - 3 million")
+                .fontAttribute(
+                    range: "KES",
+                    font: .system(size: 14, weight: .bold)
+                )
+                .fontAttribute(
+                    range: "0 - 3 million",
+                    font: .system(size: 14, weight: .regular)
+                )
+        ),
+        .init(
+            id: UUID().uuidString,
+            value: .init("KES +3 - 40 million")
+                .fontAttribute(
+                    range: "KES",
+                    font: .system(size: 14, weight: .bold)
+                )
+                .fontAttribute(
+                    range: "+3 - 40 million",
+                    font: .system(size: 14, weight: .regular)
+                )
+        ),
+        .init(
+            id: UUID().uuidString,
+            value: .init("KES +40 - 200 million")
+                .fontAttribute(
+                    range: "KES",
+                    font: .system(size: 14, weight: .bold)
+                ).fontAttribute(
+                    range: "+40 - 200 million",
+                    font: .system(size: 14, weight: .regular)
+                )
+        ),
+        .init(
+            id: UUID().uuidString,
+            value: .init("KES +200 million")
+                .fontAttribute(
+                    range: "KES",
+                    font: .system(size: 14, weight: .bold)
+                )
+                .fontAttribute(
+                    range: "+200 million",
+                    font: .system(size: 14, weight: .regular)
+                )
+        )]
+    }
+}
+
 struct DropDown_Previews: PreviewProvider {
     static var previews: some View {
         TextDropDown(
             isHidden: true,
-            items: [
-                .init(
-                    id: UUID().uuidString,
-                    value: .init("KES 0 - 3 million")
-                        .fontAttribute(
-                            range: "KES",
-                            font: .system(size: 14, weight: .bold)
-                        )
-                        .fontAttribute(
-                            range: "0 - 3 million",
-                            font: .system(size: 14, weight: .regular)
-                        )
-                ),
-                .init(
-                    id: UUID().uuidString,
-                    value: .init("KES +3 - 40 million")
-                        .fontAttribute(
-                            range: "KES",
-                            font: .system(size: 14, weight: .bold)
-                        )
-                        .fontAttribute(
-                            range: "+3 - 40 million",
-                            font: .system(size: 14, weight: .regular)
-                        )
-                ),
-                .init(
-                    id: UUID().uuidString,
-                    value: .init("KES +40 - 200 million")
-                        .fontAttribute(
-                            range: "KES",
-                            font: .system(size: 14, weight: .bold)
-                        ).fontAttribute(
-                            range: "+40 - 200 million",
-                            font: .system(size: 14, weight: .regular)
-                        )
-                ),
-                .init(
-                    id: UUID().uuidString,
-                    value: .init("KES +200 million")
-                        .fontAttribute(
-                            range: "KES",
-                            font: .system(size: 14, weight: .bold)
-                        )
-                        .fontAttribute(
-                            range: "+200 million",
-                            font: .system(size: 14, weight: .regular)
-                        )
-                )
-            ]
+            items: TextDropDownValue.sample()
         )
     }
 }
-
-

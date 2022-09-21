@@ -4,7 +4,7 @@ import SwiftUI
 struct CodeSamplesApp: App {
     var body: some Scene {
         WindowGroup {
-            SampleTransition()
+            AppView()
         }
     }
 }

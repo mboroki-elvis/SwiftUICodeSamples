@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SampleView: View {
+struct TransitionView: View {
     @Binding var showView: Bool
     @State var xOffset: CGFloat = 0
     @State var yOffset: CGFloat = 0
