@@ -5,7 +5,7 @@ public struct TextDropDown: View {
     @State private var selectedText: AttributedString = "Select"
     // Required values
     public var items: [TextDropDownValue]
-    public var onItemSelected: (TextDropDownValue) -> Void = { _ in }
+    public var onItemSelected: (TextDropDownValue) -> Void
     private var contentHeight: CGFloat {
         return CGFloat(items.count * 50)
     }
