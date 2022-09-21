@@ -1,10 +1,3 @@
-//
-//  SampleTransition.swift
-//  CustomShapes
-//
-//  Created by Elvis Mwenda on 02/09/2022.
-//
-
 import SwiftUI
 
 struct SampleTransition: View {

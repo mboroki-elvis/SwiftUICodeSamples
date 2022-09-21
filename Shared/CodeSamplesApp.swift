@@ -1,10 +1,3 @@
-//
-//  CustomShapesApp.swift
-//  Shared
-//
-//  Created by Elvis Mwenda on 25/08/2022.
-//
-
 import SwiftUI
 
 @main

@@ -1,10 +1,3 @@
-//
-//  SampleView.swift
-//  CustomShapes
-//
-//  Created by Elvis Mwenda on 02/09/2022.
-//
-
 import SwiftUI
 
 struct SampleView: View {
@@ -73,7 +66,15 @@ struct SampleView: View {
                                 }
                                 .frame(width: frame.width * 0.8, height: 247)
                                 .background(Color.dropDownGray)
-                                .clipShape(ToolTipShape(corners: .allCorners, radius: 8, toolTipPosition: .bottom(xPositionMultiplier: 0.1, 10)))
+                                .clipShape(
+                                    ToolTipShape(
+                                        corners: .allCorners,
+                                        radius: 8,
+                                        toolTipHeight: 10,
+                                        toolWidth: 16,
+                                        toolTipPosition: .bottom(xPositionMultiplier: 0.1, 10)
+                                    )
+                                )
                                 .flipsForRightToLeftLayoutDirection(true)
                                 .shadow(color: .lightGray, radius: 8)
                                 .position(x: frame.width / 4, y: -247 / 2)

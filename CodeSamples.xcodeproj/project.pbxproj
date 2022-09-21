@@ -29,6 +29,8 @@
 		C4D2137128C74FD50082728E /* PDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D2136F28C74FD50082728E /* PDFView.swift */; };
 		C4D2137728C764CC0082728E /* sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C4D2137628C764CC0082728E /* sample.pdf */; };
 		C4D2137828C764CC0082728E /* sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C4D2137628C764CC0082728E /* sample.pdf */; };
+		C4DF2D5028DB1ED2008C2E95 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DF2D4F28DB1ED2008C2E95 /* DropDown.swift */; };
+		C4DF2D5128DB1ED2008C2E95 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DF2D4F28DB1ED2008C2E95 /* DropDown.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,7 @@
 		C4B831E728B76C2200D3E807 /* ToolTipShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipShape.swift; sourceTree = "<group>"; };
 		C4D2136F28C74FD50082728E /* PDFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFView.swift; sourceTree = "<group>"; };
 		C4D2137628C764CC0082728E /* sample.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sample.pdf; sourceTree = "<group>"; };
+		C4DF2D4F28DB1ED2008C2E95 /* DropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,12 +145,12 @@
 			isa = PBXGroup;
 			children = (
 				C4B831A528B74F9C00D3E807 /* CodeSamplesApp.swift */,
-				C4D2137628C764CC0082728E /* sample.pdf */,
+				C4DF2D5328DB1EE7008C2E95 /* Assets */,
+				C4DF2D5228DB1ED6008C2E95 /* DropDown */,
 				C4D2137228C74FE20082728E /* PDFView */,
 				C451A09428C23E3B00184BCB /* RightSheet */,
 				C4B06E7B28C23EE1009BB57C /* ToolTipShape */,
 				C4B06E7F28C23FA2009BB57C /* Extensions */,
-				C4B831A728B74F9F00D3E807 /* Assets.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -195,6 +198,23 @@
 				C4D2136F28C74FD50082728E /* PDFView.swift */,
 			);
 			path = PDFView;
+			sourceTree = "<group>";
+		};
+		C4DF2D5228DB1ED6008C2E95 /* DropDown */ = {
+			isa = PBXGroup;
+			children = (
+				C4DF2D4F28DB1ED2008C2E95 /* DropDown.swift */,
+			);
+			path = DropDown;
+			sourceTree = "<group>";
+		};
+		C4DF2D5328DB1EE7008C2E95 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				C4B831A728B74F9F00D3E807 /* Assets.xcassets */,
+				C4D2137628C764CC0082728E /* sample.pdf */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,6 +383,7 @@
 				C4B831E828B76C2200D3E807 /* ToolTipShape.swift in Sources */,
 				C451A08C28C204D600184BCB /* SampleView.swift in Sources */,
 				C451A09228C20C6F00184BCB /* SampleTransition.swift in Sources */,
+				C4DF2D5028DB1ED2008C2E95 /* DropDown.swift in Sources */,
 				C4B831CD28B74F9F00D3E807 /* CodeSamplesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,6 +398,7 @@
 				C4B831E928B76C2200D3E807 /* ToolTipShape.swift in Sources */,
 				C451A08D28C204D600184BCB /* SampleView.swift in Sources */,
 				C451A09328C20C6F00184BCB /* SampleTransition.swift in Sources */,
+				C4DF2D5128DB1ED2008C2E95 /* DropDown.swift in Sources */,
 				C4B831CE28B74F9F00D3E807 /* CodeSamplesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,14 +1,8 @@
-//
-//  Extensions.swift
-//  CodeSamples
-//
-//  Created by Elvis Mwenda on 02/09/2022.
-//
-
 import SwiftUI
 public extension Color {
     static let dropDownGray = hex(0xfafafc)
     static let lightGray = hex(0xeaeaea)
+    static let borderColor = hex(0xCCCCCC)
     static func hex(_ hex: UInt) -> Self {
         Self(
             red: Double((hex & 0xff0000) >> 16) / 255,

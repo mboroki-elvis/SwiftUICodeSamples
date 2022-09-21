@@ -1,10 +1,3 @@
-//
-//  RightSheet.swift
-//  CustomShapes
-//
-//  Created by Elvis Mwenda on 02/09/2022.
-//
-
 import SwiftUI
 
 struct RightSheetModifier<ViewContent: View>: ViewModifier {

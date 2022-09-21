@@ -1,15 +1,3 @@
-//
-
-//  ContentView.swift
-
-//  SwiftUIPDFDemo
-
-//
-
-//  Created by Ashwin Mangrulkar on 2022/09/05.
-
-//
-
 import SwiftUI
 
 struct ContentView: View {

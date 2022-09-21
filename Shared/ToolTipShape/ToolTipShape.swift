@@ -3,10 +3,13 @@ import SwiftUI
 public struct ToolTipShape: Shape {
     public let corners: UIRectCorner
     public let radius: CGFloat
+    public var toolTipHeight: CGFloat
+    public let toolWidth: CGFloat
     public var toolTipPosition: ToolTipPosition
+    public var insetAmount: CGFloat = 0
     public func path(in rect: CGRect) -> Path {
-        let newOrigin = CGPoint(x: rect.origin.x + 16, y: rect.origin.y + 16)
-        let newRect = CGRect(origin: newOrigin, size: .init(width: rect.width - 32, height: rect.height - 32))
+        let newOrigin = CGPoint(x: rect.origin.x + toolWidth, y: rect.origin.y + toolTipHeight)
+        let newRect = CGRect(origin: newOrigin, size: .init(width: rect.width - toolWidth * 2, height: rect.height - toolTipHeight * 2))
         let path = Path(roundedRect: newRect, cornerRadius: radius, style: .circular)
         var newPath = Path()
         newPath.addPath(path)
@@ -30,7 +33,16 @@ public struct ToolTipShape: Shape {
             newPath.addLine(to: CGPoint(x: newRect.maxX, y: rect.midY + yConstant))
             newPath.addLine(to: CGPoint(x: newRect.maxX, y: rect.midY - yConstant))
         }
+        newPath.closeSubpath()
         return newPath
+    }
+}
+
+extension ToolTipShape: InsettableShape {
+    public func inset(by amount: CGFloat) -> some InsettableShape {
+        var arc = self
+        arc.insetAmount += amount
+        return arc
     }
 }
 
@@ -58,8 +70,9 @@ struct ToolTipTopView_Previews: PreviewProvider {
         ToolTipShape(
             corners: .allCorners,
             radius: 8,
+            toolTipHeight: 16,
+            toolWidth: 16,
             toolTipPosition: .bottom(xPositionMultiplier: 0.1, 10)
         )
     }
 }
-
