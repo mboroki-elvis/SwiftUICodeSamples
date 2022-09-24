@@ -20,7 +20,7 @@ public struct SampleToolTipShape: Shape {
             newPath.addLine(to: .init(x: xPosition, y: rect.minY))
             newPath.addLine(to: .init(x: xPosition + xConstant, y: newRect.minY))
             
-            newPath.addRelativeArc(center: .init(x: newRect.maxX - radius, y: newRect.minY + radius), radius: radius, startAngle: .degrees(180), delta: .degrees(180))
+            newPath.addArc(center: .init(x: newRect.maxX - radius, y: newRect.minY + radius), radius: radius, startAngle: .degrees(270), endAngle: .degrees(0), clockwise: false)
             
             newPath.addLine(to: .init(x: newRect.maxX, y: newRect.minY + radius))
             newPath.addLine(to: .init(x: newRect.maxX, y: newRect.maxY - radius))
