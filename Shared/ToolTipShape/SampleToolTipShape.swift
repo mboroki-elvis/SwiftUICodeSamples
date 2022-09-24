@@ -13,15 +13,14 @@ public struct SampleToolTipShape: Shape {
         var newPath = Path()
         switch toolTipPosition {
         case .top(let xMultiplier, let xConstant):
-            let xPosition = CGFloat(round(newRect.maxX - (newRect.maxX * xMultiplier)))
-            newPath.move(to: .init(x: newOrigin.x + 16, y: newOrigin.y))
-            newPath.addRelativeArc(center:.init(x:  newRect.minX + 16, y: newRect.minY + 16), radius: 16, startAngle: .degrees(180), delta: .degrees(90))
+            let xPosition = CGFloat(round(newRect.maxX - (newRect.maxX * xMultiplier)) - 8)
+            newPath.addRelativeArc(center:.init(x:  newOrigin.x + 16, y: newOrigin.y + 16), radius: 16, startAngle: .degrees(180), delta: .degrees(90))
            
             newPath.addLine(to: .init(x: xPosition - xConstant, y: newRect.minY))
             newPath.addLine(to: .init(x: xPosition, y: rect.minY))
             newPath.addLine(to: .init(x: xPosition + xConstant, y: newRect.minY))
             
-            newPath.addArc(center:.init(x: newRect.maxX - 16, y: newRect.minY + 16), radius: 16, startAngle: .degrees(180), endAngle: .degrees(90), clockwise: false)
+            newPath.addRelativeArc(center:.init(x: newRect.maxX - 16, y: newRect.minY + 16), radius: 16, startAngle: .degrees(180), delta: .degrees(180))
             
             newPath.addLine(to: .init(x: newRect.maxX, y: newRect.minY + 16))
             newPath.addLine(to: .init(x: newRect.maxX, y: newRect.maxY - 16))
@@ -47,7 +46,7 @@ public struct SampleToolTipShape: Shape {
             newPath.addLine(to: CGPoint(x: newRect.maxX, y: rect.midY + yConstant))
             newPath.addLine(to: CGPoint(x: newRect.maxX, y: rect.midY - yConstant))
         }
-//        newPath.closeSubpath()
+        newPath.closeSubpath()
         return newPath
     }
 }
