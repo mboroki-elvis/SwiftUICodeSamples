@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct SampleDropDownView: View {
+    @State private var isHidden = true
     @State private var someText: String = ""
     var body: some View {
         GeometryReader { _ in
@@ -14,6 +15,20 @@ struct SampleDropDownView: View {
                     items: TextDropDownValue.sample(),
                     onItemSelected: { _ in }
                 )
+                Text("NB: Capture your details for processing")
+                    .font(.caption)
+
+                Menu {
+                    Button {} label: {
+                        Text("Adjust Order")
+                    }
+                    Button {} label: {
+                        Text("Adjust Order")
+                    }
+
+                } label: {
+                    Label("Options", systemImage: "paperplane")
+                }
             }
         }
     }

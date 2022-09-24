@@ -34,6 +34,7 @@ public struct TextDropDown: View {
                         .foregroundColor(.grayText)
                     Image(systemName: "arrowtriangle.down.fill")
                         .frame(width: 7, height: 7)
+                        .aspectRatio(1, contentMode: .fit)
                         .padding([.trailing], 8)
                         .foregroundColor(Color.dropDownImage)
                 }
@@ -79,19 +80,19 @@ public struct TextDropDown: View {
             .opacity(isHidden ? 0 : 1)
             .animation(.easeInOut, value: isHidden)
             .background {
-                ToolTipShape(
+                SampleToolTipShape(
                     corners: .allCorners,
                     radius: 8,
-                    toolTipHeight: 12,
+                    toolTipHeight: 7,
                     toolWidth: 16,
                     toolTipPosition: .top(xPositionMultiplier: 0.05, 10)
                 )
                 .strokeBorder(Color.borderColor, lineWidth: 1)
                 .background(content: {
-                    ToolTipShape(
+                    SampleToolTipShape(
                         corners: .allCorners,
                         radius: 8,
-                        toolTipHeight: 12,
+                        toolTipHeight: 7,
                         toolWidth: 16,
                         toolTipPosition: .top(xPositionMultiplier: 0.05, 10)
                     )
