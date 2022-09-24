@@ -82,7 +82,7 @@ public struct TextDropDown: View {
             .background {
                 SampleToolTipShape(
                     corners: .allCorners,
-                    radius: 16,
+                    radius: 8,
                     toolTipHeight: 7,
                     toolWidth: 16,
                     toolTipPosition: .top(xPositionMultiplier: 0.05, 10)
@@ -91,7 +91,7 @@ public struct TextDropDown: View {
                 .background(content: {
                     SampleToolTipShape(
                         corners: .allCorners,
-                        radius: 16,
+                        radius: 8,
                         toolTipHeight: 7,
                         toolWidth: 16,
                         toolTipPosition: .top(xPositionMultiplier: 0.05, 10)

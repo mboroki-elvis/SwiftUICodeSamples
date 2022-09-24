@@ -17,18 +17,6 @@ struct SampleDropDownView: View {
                 )
                 Text("NB: Capture your details for processing")
                     .font(.caption)
-
-                Menu {
-                    Button {} label: {
-                        Text("Adjust Order")
-                    }
-                    Button {} label: {
-                        Text("Adjust Order")
-                    }
-
-                } label: {
-                    Label("Options", systemImage: "paperplane")
-                }
             }
         }
     }
