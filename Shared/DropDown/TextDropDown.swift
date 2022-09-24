@@ -69,7 +69,7 @@ public struct TextDropDown: View {
                     }
                     .onTapGesture {
                         isHidden.toggle()
-                        selectedText = item.value 
+                        selectedText = item.value
                         onItemSelected(item)
                     }
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
@@ -85,7 +85,7 @@ public struct TextDropDown: View {
                     radius: 8,
                     toolTipHeight: 7,
                     toolWidth: 16,
-                    toolTipPosition: .trailing(15)
+                    toolTipPosition: .position(.top)
                 )
                 .strokeBorder(Color.borderColor, lineWidth: 1)
                 .background(content: {
@@ -94,7 +94,7 @@ public struct TextDropDown: View {
                         radius: 8,
                         toolTipHeight: 7,
                         toolWidth: 16,
-                        toolTipPosition: .trailing(15)
+                        toolTipPosition: .position(.top)
                     )
                     .fill(Color.dropDownGray)
                 })
