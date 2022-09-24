@@ -50,13 +50,38 @@ public struct SampleToolTipShape: Shape {
             path.addRelativeArc(center: .init(x: newRect.minX + radius, y: newRect.maxY - radius), radius: radius, startAngle: .degrees(90), delta: .degrees(90))
             path.addLine(to: .init(x: newRect.minX, y: newRect.minY + radius))
         case .leading(let yConstant):
-            path.move(to: .init(x: rect.minX, y: newRect.midY))
-            path.addLine(to: .init(x: newRect.minX, y: newRect.midY + yConstant))
+            path.addRelativeArc(center: .init(x: newOrigin.x + radius, y: newOrigin.y + radius), radius: radius, startAngle: .degrees(180), delta: .degrees(90))
+            
+            path.addLine(to: .init(x: newRect.maxX - radius, y: newRect.minY))
+            path.addRelativeArc(center: .init(x: newRect.maxX - radius, y: newRect.minY + radius), radius: radius, startAngle: .degrees(180), delta: .degrees(180))
+            path.addLine(to: .init(x: newRect.maxX, y: newRect.maxY - radius))
+            
+            path.addRelativeArc(center: .init(x: newRect.maxX - radius, y: newRect.maxY - radius), radius: radius, startAngle: .degrees(0), delta: .degrees(90))
+            
+            path.addLine(to: .init(x: newRect.minX + radius, y: newRect.maxY))
+            
+            path.addRelativeArc(center: .init(x: newRect.minX + radius, y: newRect.maxY - radius), radius: radius, startAngle: .degrees(90), delta: .degrees(90))
+            
             path.addLine(to: .init(x: newRect.minX, y: newRect.midY - yConstant))
+            path.addLine(to: .init(x: rect.minX, y: newRect.midY))
+            path.addLine(to: .init(x: newRect.minX, y: newRect.midY + yConstant))
+            path.addLine(to: .init(x: newRect.minX, y: newRect.minY - radius))
         case .trailing(let yConstant):
-            path.move(to: .init(x: rect.maxX, y: newRect.midY))
-            path.addLine(to: CGPoint(x: newRect.maxX, y: rect.midY + yConstant))
+            path.addRelativeArc(center: .init(x: newOrigin.x + radius, y: newOrigin.y + radius), radius: radius, startAngle: .degrees(180), delta: .degrees(90))
+            
+            path.addLine(to: .init(x: newRect.maxX - radius, y: newRect.minY))
+            path.addRelativeArc(center: .init(x: newRect.maxX - radius, y: newRect.minY + radius), radius: radius, startAngle: .degrees(180), delta: .degrees(180))
+            path.addLine(to: .init(x: newRect.maxX, y: newRect.maxY - radius))
+            
             path.addLine(to: CGPoint(x: newRect.maxX, y: rect.midY - yConstant))
+            path.addLine(to: .init(x: rect.maxX, y: newRect.midY))
+            path.addLine(to: CGPoint(x: newRect.maxX, y: rect.midY + yConstant))
+            path.addLine(to: .init(x: newRect.maxX, y: newRect.maxY - radius))
+            path.addRelativeArc(center: .init(x: newRect.maxX - radius, y: newRect.maxY - radius), radius: radius, startAngle: .degrees(0), delta: .degrees(90))
+            
+            path.addLine(to: .init(x: newRect.minX + radius, y: newRect.maxY))
+            
+            path.addRelativeArc(center: .init(x: newRect.minX + radius, y: newRect.maxY - radius), radius: radius, startAngle: .degrees(90), delta: .degrees(90))
         }
         path.closeSubpath()
         return path
@@ -78,7 +103,7 @@ struct SampleToolTipShape_Previews: PreviewProvider {
             radius: 16,
             toolTipHeight: 16,
             toolWidth: 16,
-            toolTipPosition: .bottom(xPositionMultiplier: 0.1, 10)
+            toolTipPosition: .leading(15)
         )
     }
 }
