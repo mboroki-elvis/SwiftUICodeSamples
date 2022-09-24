@@ -127,7 +127,7 @@ struct ToolTipTopView_Previews: PreviewProvider {
             radius: 8,
             toolTipHeight: 16,
             toolWidth: 16,
-            toolTipPosition: .position(.topA)
+            toolTipPosition: .position(.top)
         )
     }
 }
