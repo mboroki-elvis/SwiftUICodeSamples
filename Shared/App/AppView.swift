@@ -21,9 +21,6 @@ struct AppView: View {
                     showDropDown = true
                 }
                 Spacer().frame(height: 30)
-                Button("Show Menu") {
-                    showDropDown = true
-                }
             }
             .frame(width: geo.size.width, height: geo.size.height)
             .rightSheet(isPresented: $showView, transitionType: .ratio(0.5)) {
