@@ -67,6 +67,7 @@ public struct TextDropDown: View {
                         }
                         Spacer().frame(width: 8)
                     }
+                    .contentShape(Rectangle())
                     .onTapGesture {
                         isHidden.toggle()
                         selectedText = item.value
