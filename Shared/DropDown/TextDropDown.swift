@@ -2,7 +2,7 @@ import SwiftUI
 
 public struct TextDropDown: View {
     @State private var isHidden = true
-    @State private var selectedText: AttributedString = "Select"
+    @State private var selectedText: AttributedString
     // Required values
     public var items: [TextDropDownValue]
     public var onItemSelected: (TextDropDownValue) -> Void
@@ -13,11 +13,13 @@ public struct TextDropDown: View {
     public init(
         isHidden: Bool = true,
         items: [TextDropDownValue],
+        placeHolder: String = "Select",
         onItemSelected: @escaping (TextDropDownValue) -> Void
     ) {
         self.items = items
         self.onItemSelected = onItemSelected
         _isHidden = State(initialValue: isHidden)
+        _selectedText = State(initialValue: .init(placeHolder))
     }
 
     public var body: some View {
@@ -33,7 +35,7 @@ public struct TextDropDown: View {
                         .font(.system(size: 14, weight: .regular))
                         .foregroundColor(.grayText)
                     Image(systemName: "arrowtriangle.down.fill")
-                        .frame(width: 7, height: 7)
+                        .imageScale(.small)
                         .aspectRatio(1, contentMode: .fit)
                         .padding([.trailing], 8)
                         .foregroundColor(Color.dropDownImage)
