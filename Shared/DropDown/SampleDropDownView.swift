@@ -12,8 +12,8 @@ struct SampleDropDownView: View {
                 }
                 .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 TextDropDown(
-                    isMultiSelect: false,
-                    items: TextDropDownValue.sample(),
+                    isMultiSelect: true,
+                    items: TextDropDownValue.sampleMultieSelect(),
                     onItemSelected: { _ in }
                 )
                 Text("NB: Capture your details for processing")

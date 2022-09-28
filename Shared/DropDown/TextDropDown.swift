@@ -11,6 +11,10 @@ public struct TextDropDown: View {
         return CGFloat(items.count * 48)
     }
 
+    let rows = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
     public init(
         isDropDownCollapsed: Bool = true,
         isMultiSelect: Bool = false,
@@ -53,63 +57,55 @@ public struct TextDropDown: View {
             .padding()
             Spacer().frame(height: isDropDownCollapsed ? 0 : 4)
             VStack {
-                Spacer().frame(height: 8)
-                ForEach(items) { item in
-                    HStack {
-                        Spacer().frame(width: 8)
-                        VStack {
-                            HStack {
-                                if isMultiSelect {
-                                    Image(systemName: "checkmark")
-                                        .imageScale(.medium)
-                                        .foregroundColor(item.isSelected ? Color.blue : Color.grayText)
-                                    Spacer().frame(width: 8)
+                VStack {
+                    Spacer().frame(height: 8)
+                    ForEach(items) { item in
+                        HStack {
+                            Spacer().frame(width: 8)
+                            VStack {
+                                HStack {
+                                    if isMultiSelect {
+                                        Image(systemName: "checkmark")
+                                            .imageScale(.medium)
+                                            .foregroundColor(item.isSelected ? Color.blue : Color.grayText)
+                                        Spacer().frame(width: 8)
+                                    }
+                                    Text(item.value)
+                                        .foregroundColor(Color.grayText)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .opacity(isDropDownCollapsed ? 0 : 1)
                                 }
-                                Text(item.value)
-                                    .foregroundColor(Color.grayText)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .opacity(isDropDownCollapsed ? 0 : 1)
+                                if item.id != items.last?.id {
+                                    Color
+                                        .borderColor
+                                        .opacity(
+                                            isDropDownCollapsed ? 0 : 1
+                                        ).frame(height: 0.5)
+                                }
                             }
-                            if item.id != items.last?.id {
-                                Color
-                                    .borderColor
-                                    .opacity(
-                                        isDropDownCollapsed ? 0 : 1
-                                    ).frame(height: 0.5)
+                            Spacer().frame(width: 8)
+                        }
+                        .frame(height: 32)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            if isMultiSelect {
+                                if let index = items.firstIndex(where: { $0.id == item.id }) {
+                                    items[index].isSelected.toggle()
+                                }
+                            } else {
+                                isDropDownCollapsed.toggle()
+                                selectedText = item.value
+                                onItemSelected(item)
                             }
                         }
-                        Spacer().frame(width: 8)
+                        .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                     }
-                    .frame(height: 32)
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        if isMultiSelect {
-                            if let index = items.firstIndex(where: { $0.id == item.id }) {
-                                items[index].isSelected.toggle()
-                            }
-                        } else {
-                            isDropDownCollapsed.toggle()
-                            selectedText = item.value
-                            onItemSelected(item)
-                        }
-                    }
-                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+                    Spacer().frame(height: 8)
                 }
-                Spacer().frame(height: 8)
-            }
-            .frame(height: isDropDownCollapsed ? 0 : contentHeight)
-            .opacity(isDropDownCollapsed ? 0 : 1)
-            .animation(.easeInOut, value: isDropDownCollapsed)
-            .background {
-                ToolTipShape(
-                    corners: .allCorners,
-                    radius: 8,
-                    toolTipHeight: 7,
-                    toolWidth: 16,
-                    toolTipPosition: .position(.top)
-                )
-                .strokeBorder(Color.borderColor, lineWidth: 1)
-                .background(content: {
+                .frame(height: isDropDownCollapsed ? 0 : contentHeight)
+                .opacity(isDropDownCollapsed ? 0 : 1)
+                .animation(.easeInOut, value: isDropDownCollapsed)
+                .background {
                     ToolTipShape(
                         corners: .allCorners,
                         radius: 8,
@@ -117,9 +113,41 @@ public struct TextDropDown: View {
                         toolWidth: 16,
                         toolTipPosition: .position(.top)
                     )
-                    .fill(Color.dropDownGray)
-                })
-                .opacity(isDropDownCollapsed ? 0 : 1)
+                    .strokeBorder(Color.borderColor, lineWidth: 1)
+                    .background(content: {
+                        ToolTipShape(
+                            corners: .allCorners,
+                            radius: 8,
+                            toolTipHeight: 7,
+                            toolWidth: 16,
+                            toolTipPosition: .position(.top)
+                        )
+                        .fill(Color.dropDownGray)
+                    })
+                    .opacity(isDropDownCollapsed ? 0 : 1)
+                }
+                let selected = items.filter { $0.isSelected }
+                if isMultiSelect, !selected.isEmpty {
+                    ScrollView(.horizontal) {
+                        LazyHGrid(rows: rows, alignment: .firstTextBaseline) {
+                            ForEach(selected) { item in
+                                Button {} label: {
+                                    HStack {
+                                        Text(item.value).foregroundColor(Color.white)
+                                        Button {} label: {
+                                            Image(systemName: "xmark")
+                                                .foregroundColor(.white)
+                                        }
+                                    }.padding([.leading, .trailing], 8)
+                                }
+                                .frame(height: 32)
+                                .background(Color.blue)
+                                .cornerRadius(18)
+                            }
+                        }
+                        .padding()
+                    }
+                }
             }
         }
     }
