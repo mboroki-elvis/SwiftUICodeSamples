@@ -1,10 +1,11 @@
 import SwiftUI
 
 public struct TextDropDown: View {
-    @State private var isDropDownCollapsed: Bool
-    @State private var selectedText: AttributedString
     // Required values
+    @State private var isDropDownCollapsed: Bool
     @State private var items: [TextDropDownValue]
+    @State private var selectedText: AttributedString
+
     private var isMultiSelect: Bool
     public var onItemSelected: (TextDropDownValue) -> Void
     private var contentHeight: CGFloat {
@@ -15,11 +16,6 @@ public struct TextDropDown: View {
         items.filter { $0.isSelected }
     }
 
-    let rows = [
-        GridItem(.adaptive(minimum: 86, maximum: 300), spacing: 8),
-        GridItem(.adaptive(minimum: 86, maximum: 300), spacing: 8),
-        GridItem(.adaptive(minimum: 86, maximum: 300), spacing: 8),
-    ]
     public init(
         isDropDownCollapsed: Bool = true,
         isMultiSelect: Bool = false,
@@ -138,18 +134,18 @@ public struct TextDropDown: View {
                             spacing: 8,
                             alignment: .leading
                         ) { item in
-                            Button {} label: {
-                                HStack {
-                                    Text(item.value).foregroundColor(Color.white)
-                                    Button {
-                                        if let index = items.firstIndex(where: { $0.id == item.id }) {
-                                            items[index].isSelected.toggle()
-                                        }
-                                    } label: {
-                                        Image(systemName: "xmark")
-                                            .foregroundColor(.white)
+                            Label {
+                                Button {
+                                    if let index = items.firstIndex(where: { $0.id == item.id }) {
+                                        items[index].isSelected.toggle()
                                     }
-                                }.padding([.leading, .trailing], 8)
+                                } label: {
+                                    Image(systemName: "xmark")
+                                        .foregroundColor(.white)
+                                }.padding(.trailing, 8)
+   
+                            } icon: {
+                                Text(item.value).foregroundColor(Color.white).padding(.leading, 8)
                             }
                             .frame(height: 32)
                             .background(Color.blue)
@@ -261,8 +257,7 @@ struct DropDown_Previews: PreviewProvider {
         TextDropDown(
             isMultiSelect: true,
             items: TextDropDownValue.sampleMultieSelect(),
-            onItemSelected: { _ in
-            }
+            onItemSelected: { _ in }
         )
     }
 }

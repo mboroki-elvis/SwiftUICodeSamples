@@ -245,8 +245,8 @@
 		C4DF2D6728E447A1008C2E95 /* FlexibleView */ = {
 			isa = PBXGroup;
 			children = (
-				C4DF2D6528E44795008C2E95 /* FlexibleWidth.swift */,
 				C4DF2D6A28E44803008C2E95 /* SizeReader.swift */,
+				C4DF2D6528E44795008C2E95 /* FlexibleWidth.swift */,
 				C4DF2D6828E447D6008C2E95 /* _FlexibleView.swift */,
 			);
 			path = FlexibleView;
