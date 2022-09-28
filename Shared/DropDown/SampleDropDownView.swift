@@ -22,3 +22,9 @@ struct SampleDropDownView: View {
         }
     }
 }
+
+struct SampleDropDownView_Preview: PreviewProvider {
+    static var previews: some View {
+        SampleDropDownView()
+    }
+}

@@ -16,8 +16,9 @@ public struct TextDropDown: View {
     }
 
     let rows = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
+        GridItem(.adaptive(minimum: 86, maximum: 300), spacing: 8),
+        GridItem(.adaptive(minimum: 86, maximum: 300), spacing: 8),
+        GridItem(.adaptive(minimum: 86, maximum: 300), spacing: 8),
     ]
     public init(
         isDropDownCollapsed: Bool = true,
@@ -58,7 +59,7 @@ public struct TextDropDown: View {
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(Color.borderColor, lineWidth: 1)
             )
-            .padding()
+            .padding([.leading, .trailing], 16)
             Spacer().frame(height: isDropDownCollapsed ? 0 : 4)
             VStack {
                 VStack {
@@ -131,28 +132,30 @@ public struct TextDropDown: View {
                     .opacity(isDropDownCollapsed ? 0 : 1)
                 }
                 if isMultiSelect, !selectedItems.isEmpty {
-                    ScrollView(.horizontal) {
-                        LazyHGrid(rows: rows, alignment: .firstTextBaseline) {
-                            ForEach(selectedItems) { item in
-                                Button {} label: {
-                                    HStack {
-                                        Text(item.value).foregroundColor(Color.white)
-                                        Button {
-                                            if let index = items.firstIndex(where: { $0.id == item.id }) {
-                                                items[index].isSelected.toggle()
-                                            }
-                                        } label: {
-                                            Image(systemName: "xmark")
-                                                .foregroundColor(.white)
+                    ScrollView {
+                        FlexibleView(
+                            data: selectedItems,
+                            spacing: 8,
+                            alignment: .leading
+                        ) { item in
+                            Button {} label: {
+                                HStack {
+                                    Text(item.value).foregroundColor(Color.white)
+                                    Button {
+                                        if let index = items.firstIndex(where: { $0.id == item.id }) {
+                                            items[index].isSelected.toggle()
                                         }
-                                    }.padding([.leading, .trailing], 8)
-                                }
-                                .frame(height: 32)
-                                .background(Color.blue)
-                                .cornerRadius(18)
+                                    } label: {
+                                        Image(systemName: "xmark")
+                                            .foregroundColor(.white)
+                                    }
+                                }.padding([.leading, .trailing], 8)
                             }
+                            .frame(height: 32)
+                            .background(Color.blue)
+                            .cornerRadius(18)
                         }
-                        .padding()
+                        .padding([.leading, .trailing], 16)
                     }
                 }
             }
