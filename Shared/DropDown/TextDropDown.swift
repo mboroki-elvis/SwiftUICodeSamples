@@ -8,7 +8,11 @@ public struct TextDropDown: View {
     private var isMultiSelect: Bool
     public var onItemSelected: (TextDropDownValue) -> Void
     private var contentHeight: CGFloat {
-        return CGFloat(items.count * 48)
+        CGFloat(items.count * 48)
+    }
+
+    private var selectedItems: [TextDropDownValue] {
+        items.filter { $0.isSelected }
     }
 
     let rows = [
@@ -126,15 +130,18 @@ public struct TextDropDown: View {
                     })
                     .opacity(isDropDownCollapsed ? 0 : 1)
                 }
-                let selected = items.filter { $0.isSelected }
-                if isMultiSelect, !selected.isEmpty {
+                if isMultiSelect, !selectedItems.isEmpty {
                     ScrollView(.horizontal) {
                         LazyHGrid(rows: rows, alignment: .firstTextBaseline) {
-                            ForEach(selected) { item in
+                            ForEach(selectedItems) { item in
                                 Button {} label: {
                                     HStack {
                                         Text(item.value).foregroundColor(Color.white)
-                                        Button {} label: {
+                                        Button {
+                                            if let index = items.firstIndex(where: { $0.id == item.id }) {
+                                                items[index].isSelected.toggle()
+                                            }
+                                        } label: {
                                             Image(systemName: "xmark")
                                                 .foregroundColor(.white)
                                         }
