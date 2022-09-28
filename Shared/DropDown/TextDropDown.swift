@@ -148,7 +148,7 @@ public struct TextDropDown: View {
                                 Text(item.value).foregroundColor(Color.white).padding(.leading, 8)
                             }
                             .frame(height: 32)
-                            .background(Color.blue)
+                            .background(Color.blue100)
                             .cornerRadius(18)
                         }
                         .padding([.leading, .trailing], 16)
