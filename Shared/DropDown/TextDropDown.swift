@@ -68,7 +68,7 @@ public struct TextDropDown: View {
                                     if isMultiSelect {
                                         Image(systemName: "checkmark")
                                             .imageScale(.medium)
-                                            .foregroundColor(item.isSelected ? Color.blue : Color.grayText)
+                                            .foregroundColor(item.isSelected ? Color.blue100 : Color.grayText)
                                         Spacer().frame(width: 8)
                                     }
                                     Text(item.value)
