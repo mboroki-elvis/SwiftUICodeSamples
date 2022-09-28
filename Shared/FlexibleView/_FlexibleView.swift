@@ -1,5 +1,5 @@
 //
-//  _FlexibleWidth.swift
+//  _FlexibleView.swift
 //  CodeSamples (iOS)
 //
 //  Created by Elvis Mwenda on 28/09/2022.
