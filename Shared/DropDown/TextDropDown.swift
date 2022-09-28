@@ -1,32 +1,35 @@
 import SwiftUI
 
 public struct TextDropDown: View {
-    @State private var isHidden = true
+    @State private var isDropDownCollapsed: Bool
     @State private var selectedText: AttributedString
     // Required values
-    public var items: [TextDropDownValue]
+    @State private var items: [TextDropDownValue]
+    private var isMultiSelect: Bool
     public var onItemSelected: (TextDropDownValue) -> Void
     private var contentHeight: CGFloat {
-        return CGFloat(items.count * 50)
+        return CGFloat(items.count * 48)
     }
 
     public init(
-        isHidden: Bool = true,
+        isDropDownCollapsed: Bool = true,
+        isMultiSelect: Bool = false,
         items: [TextDropDownValue],
         placeHolder: String = "Select",
         onItemSelected: @escaping (TextDropDownValue) -> Void
     ) {
-        self.items = items
+        self.isMultiSelect = isMultiSelect
         self.onItemSelected = onItemSelected
-        _isHidden = State(initialValue: isHidden)
+        _items = State(initialValue: items)
         _selectedText = State(initialValue: .init(placeHolder))
+        _isDropDownCollapsed = State(initialValue: isDropDownCollapsed)
     }
 
     public var body: some View {
         VStack(alignment: .leading) {
             Button {
                 withAnimation {
-                    isHidden.toggle()
+                    isDropDownCollapsed.toggle()
                 }
             } label: {
                 HStack {
@@ -48,40 +51,55 @@ public struct TextDropDown: View {
                     .stroke(Color.borderColor, lineWidth: 1)
             )
             .padding()
-            Spacer().frame(height: isHidden ? 0 : 4)
+            Spacer().frame(height: isDropDownCollapsed ? 0 : 4)
             VStack {
-                Spacer()
+                Spacer().frame(height: 8)
                 ForEach(items) { item in
                     HStack {
                         Spacer().frame(width: 8)
                         VStack {
-                            Text(item.value)
-                                .foregroundColor(Color.grayText)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .opacity(isHidden ? 0 : 1)
+                            HStack {
+                                if isMultiSelect {
+                                    Image(systemName: "checkmark")
+                                        .imageScale(.medium)
+                                        .foregroundColor(item.isSelected ? Color.blue : Color.grayText)
+                                    Spacer().frame(width: 8)
+                                }
+                                Text(item.value)
+                                    .foregroundColor(Color.grayText)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .opacity(isDropDownCollapsed ? 0 : 1)
+                            }
                             if item.id != items.last?.id {
                                 Color
                                     .borderColor
                                     .opacity(
-                                        isHidden ? 0 : 1
+                                        isDropDownCollapsed ? 0 : 1
                                     ).frame(height: 0.5)
                             }
                         }
                         Spacer().frame(width: 8)
                     }
+                    .frame(height: 32)
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        isHidden.toggle()
-                        selectedText = item.value
-                        onItemSelected(item)
+                        if isMultiSelect {
+                            if let index = items.firstIndex(where: { $0.id == item.id }) {
+                                items[index].isSelected.toggle()
+                            }
+                        } else {
+                            isDropDownCollapsed.toggle()
+                            selectedText = item.value
+                            onItemSelected(item)
+                        }
                     }
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 }
-                Spacer()
+                Spacer().frame(height: 8)
             }
-            .frame(height: isHidden ? 0 : contentHeight)
-            .opacity(isHidden ? 0 : 1)
-            .animation(.easeInOut, value: isHidden)
+            .frame(height: isDropDownCollapsed ? 0 : contentHeight)
+            .opacity(isDropDownCollapsed ? 0 : 1)
+            .animation(.easeInOut, value: isDropDownCollapsed)
             .background {
                 ToolTipShape(
                     corners: .allCorners,
@@ -101,7 +119,7 @@ public struct TextDropDown: View {
                     )
                     .fill(Color.dropDownGray)
                 })
-                .opacity(isHidden ? 0 : 1)
+                .opacity(isDropDownCollapsed ? 0 : 1)
             }
         }
     }
@@ -109,7 +127,8 @@ public struct TextDropDown: View {
 
 public struct TextDropDownValue: Identifiable, Hashable {
     public let id: String
-    public let value: AttributedString
+    public var value: AttributedString
+    public var isSelected: Bool = false
 }
 
 public extension TextDropDownValue {
@@ -162,13 +181,48 @@ public extension TextDropDownValue {
                 )
         )]
     }
+
+    static func sampleMultieSelect() -> [TextDropDownValue] {
+        [.init(
+            id: UUID().uuidString,
+            value: .init("Payment of Obligations and Expenses")
+                .fontAttribute(
+                    range: "Payment of Obligations and Expenses",
+                    font: .system(size: 14, weight: .regular)
+                )
+        ),
+        .init(
+            id: UUID().uuidString,
+            value: .init("Deposit")
+                .fontAttribute(
+                    range: "Deposit",
+                    font: .system(size: 14, weight: .regular)
+                )
+        ),
+        .init(
+            id: UUID().uuidString,
+            value: .init("Collection of Business Proceeds")
+                .fontAttribute(
+                    range: "Collection of Business Proceeds",
+                    font: .system(size: 14, weight: .regular)
+                )
+        ),
+        .init(
+            id: UUID().uuidString,
+            value: .init("Other")
+                .fontAttribute(
+                    range: "Other",
+                    font: .system(size: 14, weight: .regular)
+                )
+        )]
+    }
 }
 
 struct DropDown_Previews: PreviewProvider {
     static var previews: some View {
         TextDropDown(
-            isHidden: true,
-            items: TextDropDownValue.sample(),
+            isMultiSelect: true,
+            items: TextDropDownValue.sampleMultieSelect(),
             onItemSelected: { _ in
             }
         )

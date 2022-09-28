@@ -9,4 +9,13 @@ public extension AttributedString {
         attributedString[range].font = font
         return attributedString
     }
+    func colorAttribute(
+        range of: String,
+        color: Color
+    ) -> AttributedString {
+        var attributedString = self
+        let range = attributedString.range(of: of)!
+        attributedString[range].foregroundColor = color
+        return attributedString
+    }
 }

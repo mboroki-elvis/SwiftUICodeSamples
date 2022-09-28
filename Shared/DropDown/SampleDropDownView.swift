@@ -12,6 +12,7 @@ struct SampleDropDownView: View {
                 }
                 .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 TextDropDown(
+                    isMultiSelect: false,
                     items: TextDropDownValue.sample(),
                     onItemSelected: { _ in }
                 )
